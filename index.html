@@ -4,6 +4,8 @@
    <script src="/socket.io/socket.io.js"></script>
    <script>
       var socket = io();
+
+      //on send button click, sending the value to server
       function send(){
          if(document.getElementById('name').value!="" && document.getElementById('msg').value !="" )
          {
@@ -11,6 +13,7 @@
             socket.emit('msg', {name:document.getElementById('name').value,msg:document.getElementById('msg').value});
             document.getElementById('msg').value="";
          }
+         //validation check
          else
          {
             document.getElementById('name').value="";
@@ -19,12 +22,15 @@
          }
          
       };
+
+      //displaying the stored messages
       socket.on('load',(datas)=>{
          datas.forEach((data)=>{
             document.getElementById('message-box').innerHTML +='<div><b>' + data.name + '</b>: ' + data.msg + '</div>'
          })
          
       })
+      //displaying realtime messages
       socket.on('newmsg', function(data){
          if(data){
             document.getElementById('message-box').innerHTML +='<div><b>' + data.name + '</b>: ' + data.msg + '</div>'
