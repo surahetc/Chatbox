@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head><title>Hello world</title></head>
+   <script src="/socket.io/socket.io.js"></script>
+   <script>
+      var socket = io();
+      function send(){
+         if(document.getElementById('name').value!="" && document.getElementById('msg').value !="" )
+         {
+            document.getElementById('error-container').innerHTML ="";
+            socket.emit('msg', {name:document.getElementById('name').value,msg:document.getElementById('msg').value});
+            document.getElementById('msg').value="";
+         }
+         else
+         {
+            document.getElementById('name').value="";
+            document.getElementById('msg').value =""
+            document.getElementById('error-container').innerHTML ='<p style="color:red;">Please Enter both name and message</p>'
+         }
+         
+      };
+      socket.on('load',(datas)=>{
+         datas.forEach((data)=>{
+            document.getElementById('message-box').innerHTML +='<div><b>' + data.name + '</b>: ' + data.msg + '</div>'
+         })
+         
+      })
+      socket.on('newmsg', function(data){
+         if(data){
+            document.getElementById('message-box').innerHTML +='<div><b>' + data.name + '</b>: ' + data.msg + '</div>'
+         }
+      })
+   </script>
+   <body>
+      <h1>Chatbox</h1>
+      <div id="error-container"></div>
+      <input id="name" type="text" name="name" value="" placeholder="Enter your name!"><br>
+      <textarea id="msg" placeholder="Enter the message"></textarea><br>
+      <button type="button" name="button" onclick="send()">Send</button><br>
+      <div id="message-box"></div>
+      </body>
+   </html>
