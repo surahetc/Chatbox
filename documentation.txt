@@ -1,0 +1,36 @@
+Description of the project:- 
+
+The project is a about a chatbox where user and send real time message and it can be stored in the databse.
+
+It is a single page application and contains the following features:-
+
+1. select a name and send a message.
+
+2. validation:- if either name or message is empty then error is generated.
+
+3. Storing of message: It stores all the valid message in order.
+
+4. It displays all the valid messages in order.
+
+----------------------------------------------------------------
+Technologies used :
+
+	1. node js  => For taking all the packages like socket,express, mongodB.
+
+	2. express js => For creating a server.
+
+	3. socket.io => For creating a real time chat enviroment ablity with the server.
+
+	4. mongodB => for storing and retreiving the message sent by clients.
+
+	5. html => for displaying the chat web page.
+-----------------------------------------------------------------
+
+All the commits done in the projects and their description : - 
+
+	1st commit : the project is added to git respository.
+
+	2nd commit : Documentation file is added.
+	
+	3rd commit : All the source code is provided with comment. 
+
